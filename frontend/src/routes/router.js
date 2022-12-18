@@ -6,11 +6,10 @@ import LandingPage from "../pages/LandingPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <LandingPage />,
     children: [
       {
-        path: "login",
+        path: "/",
         element: <Form />,
       },
       {
