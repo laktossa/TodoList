@@ -4,7 +4,7 @@ const List = require("../models/list");
 class Controller {
   static getList = async (req, res, next) => {
     try {
-      const data = await List.find();
+      const data = await List.find({ userId });
       res.status(200).json(data);
     } catch (error) {}
   };
@@ -14,6 +14,7 @@ class Controller {
       const { task, category } = req.body;
       let data = await Category.find({ name: category });
       List.create({
+        userId,
         task,
         category: data,
         status: false,
@@ -24,7 +25,7 @@ class Controller {
 
   static deleteList = async (req, res, next) => {
     try {
-      const { id } = req.body;
+      const { id } = req.params;
       await List.findByIdAndDelete(id);
       res.status(200).json("Success");
     } catch (error) {}
@@ -37,7 +38,7 @@ class Controller {
       await List.updateOne(
         { id: id },
         { $set: { status: newStatus } },
-        (err, dic) => {
+        (err, doc) => {
           if (err) {
             return err;
           }

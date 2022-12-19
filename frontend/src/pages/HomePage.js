@@ -3,23 +3,39 @@ import checks from "../assets/Vector.png";
 
 export default function HomePage() {
   const [itenary, setitenary] = useState([
-    "Favourites",
-    "Groceries",
-    "Work",
-    "Study",
-    "Sports",
+    { name: "Favourites", color: "#EB5757" },
+    { name: "Groceries", color: "#27AE60" },
+    { name: "Work", color: "#2F80ED" },
+    { name: "Study", color: "#F2994A" },
+    { name: "Sports", color: "#9B51E0" },
   ]);
 
   const [list, setList] = useState([
     {
       task: "Buy Bananas for the pancakes",
-      category: "Groceries",
+      category: { name: "Groceries", color: "#27AE60" },
       status: true,
     },
-    { task: "Go to the Gym", category: "Sports", status: true },
-    { task: "Prepare roadmap for MVP", category: "Work", status: false },
-    { task: "Read chapter 3 from Math book", category: "Study", status: false },
-    { task: "Call Peter", category: "Work", status: false },
+    {
+      task: "Go to the Gym",
+      category: { name: "Sports", color: "#9B51E0" },
+      status: true,
+    },
+    {
+      task: "Prepare roadmap for MVP",
+      category: { name: "Work", color: "#2F80ED" },
+      status: false,
+    },
+    {
+      task: "Read chapter 3 from Math book",
+      category: { name: "Study", color: "#F2994A" },
+      status: false,
+    },
+    {
+      task: "Call Peter",
+      category: { name: "Work", color: "#2F80ED" },
+      status: false,
+    },
   ]);
 
   return (
@@ -37,7 +53,7 @@ export default function HomePage() {
                   {itenary.map((e) => (
                     <>
                       <h1 className="text-3xl hover:bg-red-200  ">
-                        <button>{e}</button>
+                        <button>{e.name}</button>
                       </h1>
                     </>
                   ))}
@@ -92,7 +108,7 @@ export default function HomePage() {
                       )}
 
                       <div className="border px-2 rounded-xl bg-red-200 flex items-center">
-                        <h1>{e.category}</h1>
+                        <h1>{e.category.name}</h1>
                       </div>
                     </div>
                   </>

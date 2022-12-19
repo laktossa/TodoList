@@ -6,7 +6,9 @@ class Controller {
   static signIn = async (req, res, next) => {
     try {
       const { username, password } = req.body;
-      const user = User.find({ username });
+
+      const user = await User.find({ username });
+      console.log(user._id);
       if (!comparePass(password, user.password)) {
         throw { name: "NOT FOUND" };
       }
@@ -14,16 +16,19 @@ class Controller {
         id: user.id,
       };
       const token = signToken(payload);
-      res.status(200).json(token);
+      res.status(200).json({ access_token: token });
     } catch (error) {}
   };
 
   static signUp = async (req, res, next) => {
     try {
+      console.log(req.body);
       const { name, phoneNumber, email, username, password } = req.body;
       await User.create({ name, phoneNumber, email, username, password });
       res.status(201).json("Success");
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 module.exports = Controller;

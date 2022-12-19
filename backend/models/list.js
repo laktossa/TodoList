@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const listSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: [true, "This is required"],
+  },
   task: {
     type: String,
     required: [true, "This is required"],
