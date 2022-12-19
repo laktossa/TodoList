@@ -52,7 +52,7 @@ export default function SignUp() {
                 type="text"
                 name="name"
                 placeholder="Your name"
-                className="border py-4 px-5 rounded-lg mt-1 shadow-md"
+                className="border py-4 px-5 rounded-lg mt-1 shadow-md hover:scale-110 duration-500"
               />
             </label>
             <label htmlFor="" className="flex flex-col">
@@ -62,7 +62,7 @@ export default function SignUp() {
                 type="text"
                 name="phoneNumber"
                 placeholder="+62"
-                className="border py-4 px-5 rounded-lg mt-1 shadow-md"
+                className="border py-4 px-5 rounded-lg mt-1 shadow-md hover:scale-110 duration-500"
               />
             </label>
             <label htmlFor="" className="flex flex-col">
@@ -72,7 +72,7 @@ export default function SignUp() {
                 type="email"
                 name="email"
                 placeholder="example@mail.com"
-                className="border py-4 px-5 rounded-lg mt-1 shadow-md"
+                className="border py-4 px-5 rounded-lg mt-1 shadow-md hover:scale-110 duration-500"
               />
             </label>
             <label htmlFor="" className="flex flex-col">
@@ -82,12 +82,12 @@ export default function SignUp() {
                 type="text"
                 name="username"
                 placeholder="Your registered username"
-                className="border py-4 px-5 rounded-lg mt-1 shadow-md"
+                className="border py-4 px-5 rounded-lg mt-1 shadow-md hover:scale-110 duration-500"
               />
             </label>
             <label htmlFor="" className="flex flex-col w-full">
               Password
-              <div className="w-full py-3 px-5 shadow-md border rounded-lg mt-1 flex items-center border-hidden">
+              <div className="w-full py-3 px-5 shadow-md border rounded-lg mt-1 flex items-center border-hidden hover:scale-110 duration-500">
                 <input
                   onChange={handleInput}
                   type="password"
@@ -108,7 +108,7 @@ export default function SignUp() {
             </label>
           </div>
           <div className="flex justify-center">
-            <button className="bg-blue-700 py-3 w-full text-white rounded-md">
+            <button className="bg-blue-700 hover:bg-blue-500 duration-500 py-3 w-full text-white rounded-md">
               Sign Up
             </button>
           </div>

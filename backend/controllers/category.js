@@ -10,8 +10,9 @@ class Controller {
 
   static addCategory = async (req, res, next) => {
     try {
-      const { userId, name, color } = req.body;
-      await Category.create({ name, color });
+      const { userId } = req.user;
+      const { name, color } = req.body;
+      await Category.create({ name, color, userId });
       res.status(201).json("Success");
     } catch (error) {}
   };

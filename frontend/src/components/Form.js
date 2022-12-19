@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
@@ -7,8 +6,8 @@ export default function Form() {
     <div>
       <>
         <div className="px-16 mt-32 flex flex-col gap-10">
-          <div>
-            <div className="flex flex-row gap-2">
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-row gap-3">
               <h1 className="text-2xl">Welcome to To Do List</h1>
               <img
                 src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/72x72/1f44b.png"
@@ -21,7 +20,7 @@ export default function Form() {
             </h1>
           </div>
           <div>
-            {window.location.pathname === "/" ? (
+            {window.location.pathname === "/signin" ? (
               <>
                 <SignIn />
               </>

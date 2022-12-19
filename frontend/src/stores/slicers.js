@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 const BASE_URL = "http://localhost:3001";
 
 // ============================================== User
 
 export const signIn = createAsyncThunk("signIn", async (payload) => {
   try {
-    console.log(payload, "lol");
     const { data } = await axios.post(`${BASE_URL}/users/signin`, payload);
     localStorage.setItem("access_token", data.access_token);
   } catch (error) {

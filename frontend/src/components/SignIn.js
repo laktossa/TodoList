@@ -6,6 +6,7 @@ import { signIn } from "../stores/slicers";
 export default function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [input, setInput] = useState({
     username: "",
     password: "",
@@ -18,16 +19,11 @@ export default function SignIn() {
       [name]: value,
     };
     setInput(newInput);
-    console.log(input);
   };
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    dispatch(signIn(input));
-    // setInput({
-    //   username: "",
-    //   password: "",
-    // });
+    dispatch(signIn(input)).then(() => navigate("/"));
   };
 
   return (
@@ -49,19 +45,19 @@ export default function SignIn() {
                 type="text"
                 name="username"
                 placeholder="Your registered username"
-                className="border py-4 px-5 rounded-lg mt-1 shadow-md"
+                className="border py-4 px-5 rounded-lg mt-1 shadow-md hover:scale-110 duration-500"
               />
             </label>
             <label htmlFor="" className="flex flex-col w-full">
               Password
-              <div className="w-full py-3 px-5 shadow-md border rounded-lg mt-1 flex items-center">
+              <div className="w-full py-3 px-5 shadow-md border rounded-lg mt-1 flex items-center hover:scale-110 duration-500">
                 <input
                   onChange={handleInput}
                   type="password"
                   name="password"
                   placeholder="*****"
                   autoComplete="off"
-                  className="mt-1 w-[90%]"
+                  className="mt-1 w-[90%] outline-0"
                 />
                 <button className="w-[10%] flex flex-row-reverse">
                   <div className="w-7 h-7 flex items-center">
@@ -75,7 +71,7 @@ export default function SignIn() {
             </label>
           </div>
           <div className="flex justify-center">
-            <button className="bg-blue-700 py-3 w-full text-white rounded-md">
+            <button className="bg-blue-700 py-3 w-full text-white rounded-md hover:bg-blue-500 duration-500">
               Sign In
             </button>
           </div>

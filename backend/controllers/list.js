@@ -12,6 +12,7 @@ class Controller {
   static addList = async (req, res, next) => {
     try {
       const { task, category } = req.body;
+      const { userId } = req.user;
       let data = await Category.find({ name: category });
       List.create({
         userId,

@@ -1,24 +1,38 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import Form from "../components/Form";
-
 import HomePage from "../pages/HomePage";
 import LandingPage from "../pages/LandingPage";
 
-const router = createBrowserRouter([
+const route = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+    loader: () => {
+      if (!localStorage.getItem("access_token")) {
+        throw redirect("/signin");
+      }
+      return null;
+    },
+  },
   {
     element: <LandingPage />,
+    loader: () => {
+      if (localStorage.getItem("access_token")) {
+        throw redirect("/");
+      }
+      return null;
+    },
     children: [
       {
-        path: "/",
+        path: "/signin",
         element: <Form />,
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <Form />,
       },
     ],
   },
-  { path: "home", element: <HomePage /> },
 ]);
 
-export default router;
+export default route;
